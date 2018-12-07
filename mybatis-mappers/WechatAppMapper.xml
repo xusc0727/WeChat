@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xsc.dao.WechatAppMapper">
+  <resultMap id="BaseResultMap" type="com.xsc.model.WechatApp">
+    <result column="wechat_appid" jdbcType="BIGINT(20)" property="wechatAppId" />
+    <result column="appid" jdbcType="VARCHAR" property="appId" />
+    <result column="secret" jdbcType="VARCHAR" property="secret" />
+    <result column="wechat_app_name" jdbcType="VARCHAR" property="wechatAppName" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="is_del" jdbcType="INT(11)" property="isDel" />
+    <result column="create_date" jdbcType="DATETIME" property="createDate" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_date" jdbcType="DATETIME" property="updateDate" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+  </resultMap>
+
+	<select id="selectWechatAppList" resultMap="BaseResultMap">
+		SELECT * FROM wechat_app
+	</select>
+	<insert id="insertWechatApp">
+		INSERT INTO  
+	</insert>
+	<update id="updateWechatApp">
+	    UPDATE 
+	</update>
+	<delete id="deleteWechatApp" parameterMap="">
+	    DELETE FROM wechat_app WHERE app_id = #{appId}
+	</delete>
+</mapper>

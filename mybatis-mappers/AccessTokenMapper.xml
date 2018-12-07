@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xsc.dao.AccessTokenDao">
+  <resultMap id="BaseResultMap" type="com.xsc.model.AccessToken">
+    <result column="wechat_appid" jdbcType="BIGINT(20)" property="wechatAppId" />
+    <result column="access_token" jdbcType="VARCHAR" property="accessToken" />
+    <result column="refresh_time" jdbcType="DATETIME" property="refreshTime" />
+    <result column="expires_in" jdbcType="VARCHAR" property="expiresIn" />
+  </resultMap>
+
+	<select id="selectAccessToken" resultMap="BaseResultMap">
+	select * from wechat_access_token where wechat_appid = #{wechatAppId}
+	</select>
+</mapper>
