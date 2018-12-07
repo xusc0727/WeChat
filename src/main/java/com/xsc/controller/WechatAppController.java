@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.xsc.model.WechatApp;
@@ -23,7 +24,7 @@ public class WechatAppController {
 	private WechatAppService wechatAppService;
 	
 	@ResponseBody
-	@RequestMapping("/wechatApp/select")
+	@RequestMapping(value = "/wechatApp/select",method = RequestMethod.GET )
 	public String selectWechatAppList(){
 		Map<String,Object> ResponseMap = new HashMap<String, Object>();
 		List<WechatApp> wechatAppList = wechatAppService.selectWechatAppList();

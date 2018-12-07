@@ -2,8 +2,11 @@ package com.xsc.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.xsc.model.WechatApp;
 
+@Repository
 public interface WechatAppDao {
 
 	List<WechatApp> selectWechatAppList();
