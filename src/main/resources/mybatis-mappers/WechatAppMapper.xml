@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xsc.dao.WechatAppMapper">
-  <resultMap id="BaseResultMap" type="com.xsc.model.WechatApp">
-    <result column="wechat_appid" jdbcType="BIGINT(20)" property="wechatAppId" />
+<mapper namespace="com.xsc.dao.WechatAppDao">
+  <resultMap id="WechatAppResultMap" type="com.xsc.model.WechatApp">
+    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="appid" jdbcType="VARCHAR" property="appId" />
     <result column="secret" jdbcType="VARCHAR" property="secret" />
     <result column="wechat_app_name" jdbcType="VARCHAR" property="wechatAppName" />
     <result column="token" jdbcType="VARCHAR" property="token" />
-    <result column="is_del" jdbcType="INT(11)" property="isDel" />
-    <result column="create_date" jdbcType="DATETIME" property="createDate" />
+    <result column="is_del" jdbcType="INTEGER" property="isDel" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
     <result column="create_by" jdbcType="VARCHAR" property="createBy" />
-    <result column="update_date" jdbcType="DATETIME" property="updateDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
     <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
   </resultMap>
 
-	<select id="selectWechatAppList" resultMap="BaseResultMap">
+	<select id="selectWechatAppList" resultMap="WechatAppResultMap">
 		SELECT * FROM wechat_app
 	</select>
 	<insert id="insertWechatApp">
@@ -23,7 +23,7 @@
 	<update id="updateWechatApp">
 	    UPDATE 
 	</update>
-	<delete id="deleteWechatApp" parameterMap="">
+	<delete id="deleteWechatApp" parameterType="com.xsc.model.WechatApp">
 	    DELETE FROM wechat_app WHERE app_id = #{appId}
 	</delete>
 </mapper>

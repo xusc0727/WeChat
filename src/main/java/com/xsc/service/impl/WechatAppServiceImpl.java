@@ -9,7 +9,7 @@ import com.xsc.dao.WechatAppDao;
 import com.xsc.model.WechatApp;
 import com.xsc.service.WechatAppService;
 
-@Service
+@Service("WechatAppServiceImpl")
 public class WechatAppServiceImpl implements WechatAppService {
 
 	@Autowired
@@ -27,8 +27,8 @@ public class WechatAppServiceImpl implements WechatAppService {
 		return wechatAppDao.updateWechatApp();
 	}
 
-	public int deleteWechatApp() {
-		return wechatAppDao.deleteWechatApp();
+	public int deleteWechatApp(String appId) {
+		return wechatAppDao.deleteWechatApp(appId);
 	}
 
 }

@@ -2,10 +2,12 @@ package com.xsc.model;
 
 import java.util.Date;
 
+import com.xsc.util.DateUtils;
+
 public class WechatApp {
 	
-	//公众号id
-	private Long wechatAppId;
+	//id
+	private Integer id;
 	//公众号appid
 	private String appId;
 	//公众号secret
@@ -17,19 +19,19 @@ public class WechatApp {
 	//是否删除
 	private Integer isDel;
 	//创建时间
-	private Date createDate;
+	private String createDate;
 	//创建者
 	private String createBy;
 	//更新时间
-	private Date updateDate;
+	private String updateDate;
 	//更新者
 	private String updateBy;
 	
-	public Long getWechatAppId() {
-		return wechatAppId;
+	public Integer getId() {
+		return id;
 	}
-	public void setWechatAppId(Long wechatAppId) {
-		this.wechatAppId = wechatAppId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	public String getAppId() {
 		return appId;
@@ -61,11 +63,11 @@ public class WechatApp {
 	public void setIsDel(Integer isDel) {
 		this.isDel = isDel;
 	}
-	public Date getCreateDate() {
+	public String getCreateDate() {
 		return createDate;
 	}
 	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
+		this.createDate = DateUtils.format(createDate, "yyyy-MM-dd hh:mm:ss");
 	}
 	public String getCreateBy() {
 		return createBy;
@@ -73,11 +75,11 @@ public class WechatApp {
 	public void setCreateBy(String createBy) {
 		this.createBy = createBy;
 	}
-	public Date getUpdateDate() {
+	public String getUpdateDate() {
 		return updateDate;
 	}
 	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
+		this.updateDate = DateUtils.format(updateDate, "yyyy-MM-dd hh:mm:ss");
 	}
 	public String getUpdateBy() {
 		return updateBy;

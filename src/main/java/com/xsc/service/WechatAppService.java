@@ -12,5 +12,5 @@ public interface WechatAppService {
 	
 	int updateWechatApp();
 	
-	int deleteWechatApp();
+	int deleteWechatApp(String appId);
 }

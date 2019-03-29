@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.xsc.model.WechatApp;
 
-@Repository
+@Repository("WechatAppDao")
 public interface WechatAppDao {
 
 	List<WechatApp> selectWechatAppList();
@@ -15,5 +15,5 @@ public interface WechatAppDao {
 	
 	int updateWechatApp();
 	
-	int deleteWechatApp();
+	int deleteWechatApp(String appId);
 }
