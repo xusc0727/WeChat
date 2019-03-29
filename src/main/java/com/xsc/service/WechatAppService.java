@@ -1,16 +1,16 @@
 package com.xsc.service;
 
-import java.util.List;
-
-import com.xsc.model.WechatApp;
+import java.util.Map;
 
 public interface WechatAppService {
 
-	List<WechatApp> selectWechatAppList();
+	Map<String,Object> selectWechatAppList() throws Exception;
 	
-	int insertWechatApp();
+	Map<String,Object> selectWechatAppByAppId(Map<String,Object> tempMap) throws Exception;
 	
-	int updateWechatApp();
+	Map<String,Object> insertWechatApp(Map<String,Object> tempMap) throws Exception;
 	
-	int deleteWechatApp(String appId);
+	Map<String,Object> updateWechatApp(Map<String,Object> tempMap) throws Exception;
+	
+	Map<String,Object> deleteWechatAppByAppId(Map<String,Object> tempMap) throws Exception;
 }

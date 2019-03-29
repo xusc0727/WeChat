@@ -15,15 +15,21 @@
   </resultMap>
 
 	<select id="selectWechatAppList" resultMap="WechatAppResultMap">
-		SELECT * FROM wechat_app
+		SELECT * 
+		FROM wechat_app
 	</select>
-	<insert id="insertWechatApp">
+	<select id="selectWechatAppByAppId" parameterType="VARCHAR" resultType="com.xsc.model.WechatApp">
+		SELECT * 
+		FROM wechat_app
+		WHERE app_id = #{appId}
+	</select>
+	<insert id="insertWechatApp" parameterType="com.xsc.model.WechatApp" >
 		INSERT INTO  
 	</insert>
-	<update id="updateWechatApp">
+	<update id="updateWechatApp" >
 	    UPDATE 
 	</update>
-	<delete id="deleteWechatApp" parameterType="com.xsc.model.WechatApp">
+	<delete id="deleteWechatApp" parameterType="VARCHAR">
 	    DELETE FROM wechat_app WHERE app_id = #{appId}
 	</delete>
 </mapper>

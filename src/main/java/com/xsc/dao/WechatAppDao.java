@@ -11,9 +11,11 @@ public interface WechatAppDao {
 
 	List<WechatApp> selectWechatAppList();
 	
-	int insertWechatApp();
+	WechatApp selectWechatAppByAppId(String appId);
 	
-	int updateWechatApp();
+	int insertWechatApp(WechatApp wechatApp);
+	
+	int updateWechatApp(WechatApp wechatApp);
 	
 	int deleteWechatApp(String appId);
 }
