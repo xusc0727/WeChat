@@ -1,10 +1,17 @@
 package com.xsc.dao;
 
-import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import com.xsc.model.AccessToken;
 
+@Repository("AccessTokenDao")
 public interface AccessTokenDao {
 
-	AccessToken selectAccessToken(@Param("wechatAppId") String wechatAppId);
+	AccessToken selectAccessToken(String appid);
+	
+	int insertAccessToken(AccessToken accessToken);
+	
+	int updateAccessToken(AccessToken accessToken);
+	
+	
 }

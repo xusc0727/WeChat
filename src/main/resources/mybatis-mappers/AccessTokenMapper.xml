@@ -1,14 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xsc.dao.AccessTokenDao">
-  <resultMap id="BaseResultMap" type="com.xsc.model.AccessToken">
-    <result column="wechat_appid" jdbcType="BIGINT" property="wechatAppId" />
+  <resultMap id="AccessTokenResultMap" type="com.xsc.model.AccessToken">
+    <id column="appid" jdbcType="VARCHAR" property="appid" />
     <result column="access_token" jdbcType="VARCHAR" property="accessToken" />
-    <result column="refresh_time" jdbcType="TIME" property="refreshTime" />
     <result column="expires_in" jdbcType="VARCHAR" property="expiresIn" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="refresh_date" jdbcType="TIMESTAMP" property="refreshDate" />
   </resultMap>
 
-	<select id="selectAccessToken" resultMap="BaseResultMap">
-	select * from wechat_access_token where wechat_appid = #{wechatAppId}
+	<select id="selectAccessToken" resultMap="AccessTokenResultMap">
+	SELECT * 
+	FROM Wechat_AccessToken 
+	WHERE appid = #{appid}
 	</select>
+	
+	<insert id="insertAccessToken" parameterType="com.xsc.model.AccessToken" >
+		INSERT INTO Wechat_AccessToken
+					(
+					appid,
+					access_token,
+					expires_in,
+					create_date,
+					refresh_date
+					)
+		VALUES
+				(
+				#{appid},
+				#{accessToken},
+				#{expiresIn},
+				#{createDate},
+				#{refreshDate}	
+				)
+	</insert>
+	
+	<update id="updateAccessToken" parameterType="com.xsc.model.AccessToken">
+		UPDATE Wechat_AccessToken
+		SET access_token = #{accessToken},
+			expires_in = #{expiresIn},
+			create_date = #{createDate},
+			refresh_date = #{refreshDate}
+		WHERE appid = #{appid}
+	</update>
+	
 </mapper>

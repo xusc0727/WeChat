@@ -1,5 +1,9 @@
 package com.xsc.model;
 
+import java.util.Date;
+
+import com.xsc.util.DateUtils;
+
 public class AccessToken {
 	
 	//公众号id
@@ -7,7 +11,7 @@ public class AccessToken {
 	//公众号的accessToken
 	private String accessToken;
 	//凭证有效时间
-	private String expiresIn;
+	private int expiresIn;
 	//创建时间
 	private String createDate;
 	//刷新时间
@@ -25,23 +29,23 @@ public class AccessToken {
 	public void setAccessToken(String accessToken) {
 		this.accessToken = accessToken;
 	}
-	public String getExpiresIn() {
+	public int getExpiresIn() {
 		return expiresIn;
 	}
-	public void setExpiresIn(String expiresIn) {
+	public void setExpiresIn(int expiresIn) {
 		this.expiresIn = expiresIn;
 	}
 	public String getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(String createDate) {
-		this.createDate = createDate;
+	public void setCreateDate(Date createDate) {
+		this.createDate = DateUtils.format(createDate, "yyyy-MM-dd hh:mm:ss");
 	}
 	public String getRefreshDate() {
 		return refreshDate;
 	}
-	public void setRefreshDate(String refreshDate) {
-		this.refreshDate = refreshDate;
+	public void setRefreshDate(Date refreshDate) {
+		this.refreshDate = DateUtils.format(refreshDate, "yyyy-MM-dd hh:mm:ss");;
 	}
 	
 }
