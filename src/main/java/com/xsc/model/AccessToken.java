@@ -3,19 +3,21 @@ package com.xsc.model;
 public class AccessToken {
 	
 	//公众号id
-	private Long wechatAppId;
+	private String appid;
 	//公众号的accessToken
 	private String accessToken;
-	//刷新时间
-	private String refreshTime;
 	//凭证有效时间
 	private String expiresIn;
+	//创建时间
+	private String createDate;
+	//刷新时间
+	private String refreshDate;
 	
-	public Long getCode() {
-		return wechatAppId;
+	public String getAppid() {
+		return appid;
 	}
-	public void setCode(Long wechatAppId) {
-		this.wechatAppId = wechatAppId;
+	public void setAppid(String appid) {
+		this.appid = appid;
 	}
 	public String getAccessToken() {
 		return accessToken;
@@ -23,17 +25,23 @@ public class AccessToken {
 	public void setAccessToken(String accessToken) {
 		this.accessToken = accessToken;
 	}
-	public String getRefreshTime() {
-		return refreshTime;
-	}
-	public void setRefreshTime(String refreshTime) {
-		this.refreshTime = refreshTime;
-	}
 	public String getExpiresIn() {
 		return expiresIn;
 	}
 	public void setExpiresIn(String expiresIn) {
 		this.expiresIn = expiresIn;
+	}
+	public String getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
+	}
+	public String getRefreshDate() {
+		return refreshDate;
+	}
+	public void setRefreshDate(String refreshDate) {
+		this.refreshDate = refreshDate;
 	}
 	
 }

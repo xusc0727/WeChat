@@ -4,12 +4,12 @@ import java.util.Date;
 
 import com.xsc.util.DateUtils;
 
-public class WechatApp {
+public class WechatAppInfo {
 	
 	//id
 	private Integer id;
 	//公众号appid
-	private String appId;
+	private String appid;
 	//公众号secret
 	private String secret;
 	//公众号名称
@@ -33,11 +33,11 @@ public class WechatApp {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getAppId() {
-		return appId;
+	public String getAppid() {
+		return appid;
 	}
-	public void setAppId(String appId) {
-		this.appId = appId;
+	public void setAppid(String appid) {
+		this.appid = appid;
 	}
 	public String getSecret() {
 		return secret;

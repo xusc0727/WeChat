@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xsc.dao.WechatAppInfoDao">
+  <resultMap id="WechatAppInfoResultMap" type="com.xsc.model.WechatAppInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="appid" jdbcType="VARCHAR" property="appid" />
+    <result column="secret" jdbcType="VARCHAR" property="secret" />
+    <result column="wechat_app_name" jdbcType="VARCHAR" property="wechatAppName" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="is_del" jdbcType="INTEGER" property="isDel" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+  </resultMap>
+
+	<select id="selectWechatAppList" resultMap="WechatAppInfoResultMap">
+		SELECT * 
+		FROM Wechat_AppInfo
+	</select>
+	<select id="selectWechatAppByAppid" resultMap="WechatAppInfoResultMap">
+		SELECT * 
+		FROM Wechat_AppInfo
+		WHERE appid = #{appid}
+	</select>
+	<insert id="insertWechatApp" parameterType="com.xsc.model.WechatAppInfo" >
+		INSERT INTO Wechat_AppInfo
+					(
+					appid,
+					secret,
+					wechat_app_name,
+					token,
+					is_del,
+					create_date,
+					create_by,
+					update_date,
+					update_by
+					)
+		VALUES
+				(
+				#{appid},
+				#{secret},
+				#{wechatAppName},
+				#{token},
+				#{isDel},
+				#{createDate},
+				#{createBy},
+				#{updateDate},
+				#{updateBy}
+				)
+	</insert>
+	<update id="updateWechatApp" parameterType="com.xsc.model.WechatAppInfo" >
+	    UPDATE Wechat_AppInfo
+	    <set>
+            <if test="secret!=null">
+                secret = #{secret},
+            </if>
+            <if test="wechatAppName!=null">
+                wechat_app_name = #{wechatAppName},
+            </if>
+            <if test="token!=null">
+                token = #{token},
+            </if>
+            <if test="isDel!=null">
+                is_del = #{isDel},
+            </if>
+            <if test="updateDate!=null">
+                update_date = #{updateDate},
+            </if>
+            <if test="updateBy!=null">
+                update_by = #{updateBy},
+            </if>
+        </set>
+		WHERE appid = #{appid}
+	</update>
+	<delete id="deleteWechatAppByAppid">
+	    DELETE FROM Wechat_AppInfo 
+	    WHERE appid = #{appid}
+	</delete>
+</mapper>

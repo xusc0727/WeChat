@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.xsc.service.WechatAppService;
+import com.xsc.service.WechatAppInfoService;
 import com.xsc.util.JsonHelper;
 
 @RestController
-public class WechatAppController {
+public class WechatAppInfoController {
 
-	private static final Logger logger = Logger.getLogger(WechatAppController.class);
+	private static final Logger logger = Logger.getLogger(WechatAppInfoController.class);
 	
 	@Autowired
-	private WechatAppService wechatAppService;
+	private WechatAppInfoService wechatAppService;
 	
 	@ResponseBody
-	@RequestMapping(value = "/wechatApp/selectWechatAppList",method = RequestMethod.GET )
+	@RequestMapping(value = "/wechatAppInfo/selectWechatAppList",method = RequestMethod.GET )
 	public String selectWechatAppList(){
 		Map<String,Object> ResponseMap = new HashMap<String, Object>();
 		try {
@@ -37,12 +37,12 @@ public class WechatAppController {
 	
 	@SuppressWarnings("unchecked")
 	@ResponseBody
-	@RequestMapping(value = "/wechatApp/selectWechatAppByAppId",method = RequestMethod.POST )
-	public String selectWechatAppByAppId(@RequestBody String json){
+	@RequestMapping(value = "/wechatAppInfo/selectWechatAppByAppid",method = RequestMethod.POST )
+	public String selectWechatAppByAppid(@RequestBody String json){
 		Map<String,Object> paramsMap = JsonHelper.jsonToBean(json, Map.class);
 		Map<String,Object> ResponseMap = new HashMap<String, Object>();
 		try {
-			ResponseMap = wechatAppService.selectWechatAppByAppId(paramsMap);
+			ResponseMap = wechatAppService.selectWechatAppByAppid(paramsMap);
 		} catch (Exception e) {
 			logger.error(e);
 			e.printStackTrace();
@@ -52,7 +52,7 @@ public class WechatAppController {
 	
 	@SuppressWarnings("unchecked")
 	@ResponseBody
-	@RequestMapping(value = "/wechatApp/insertWechatApp",method = RequestMethod.POST )
+	@RequestMapping(value = "/wechatAppInfo/insertWechatApp",method = RequestMethod.POST )
 	public String insertWechatApp(@RequestBody String json){
 		Map<String,Object> paramsMap = JsonHelper.jsonToBean(json, Map.class);
 		Map<String,Object> ResponseMap = new HashMap<String, Object>();
@@ -67,7 +67,7 @@ public class WechatAppController {
 	
 	@SuppressWarnings("unchecked")
 	@ResponseBody
-	@RequestMapping(value = "/wechatApp/updateWechatApp",method = RequestMethod.POST )
+	@RequestMapping(value = "/wechatAppInfo/updateWechatApp",method = RequestMethod.POST )
 	public String updateWechatApp(@RequestBody String json){
 		Map<String,Object> paramsMap = JsonHelper.jsonToBean(json, Map.class);
 		Map<String,Object> ResponseMap = new HashMap<String, Object>();
@@ -82,12 +82,12 @@ public class WechatAppController {
 	
 	@SuppressWarnings("unchecked")
 	@ResponseBody
-	@RequestMapping(value = "/wechatApp/deleteWechatAppByAppId",method = RequestMethod.POST )
-	public String deleteWechatAppByAppId(@RequestBody String json){
+	@RequestMapping(value = "/wechatAppInfo/deleteWechatAppByAppid",method = RequestMethod.POST )
+	public String deleteWechatAppByAppid(@RequestBody String json){
 		Map<String,Object> paramsMap = JsonHelper.jsonToBean(json, Map.class);
 		Map<String,Object> ResponseMap = new HashMap<String, Object>();
 		try {
-			ResponseMap = wechatAppService.deleteWechatAppByAppId(paramsMap);
+			ResponseMap = wechatAppService.deleteWechatAppByAppid(paramsMap);
 		} catch (Exception e) {
 			logger.error(e);
 			e.printStackTrace();
