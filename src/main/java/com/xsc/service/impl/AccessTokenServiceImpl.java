@@ -1,5 +1,6 @@
 package com.xsc.service.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.xsc.dao.AccessTokenDao;
 import com.xsc.dao.WechatAppInfoDao;
@@ -15,6 +17,7 @@ import com.xsc.model.AccessToken;
 import com.xsc.model.WechatAppInfo;
 import com.xsc.service.AccessTokenService;
 import com.xsc.util.Constants;
+import com.xsc.util.DateUtils;
 import com.xsc.util.HttpUtils;
 
 @Service("AccessTokenServiceImpl")
@@ -28,24 +31,24 @@ public class AccessTokenServiceImpl implements AccessTokenService {
 	@Autowired
 	private WechatAppInfoDao wechatAppDao;
 	
-	public Map<String, Object> selectAccessTokenService(Map<String, Object> tempMap) throws Exception {
-		Map<String,Object> responseMap = new HashMap<String, Object>();
-		if(tempMap.get("appid")==null) {
-			responseMap.put("status",500);
-			responseMap.put("message","参数有误");
-			return responseMap;
+	public String getAccessToken(String appid) throws Exception {
+		String accessTokenStr = "";
+		if(StringUtils.isEmpty(appid)) {
+			return accessTokenStr;
 		}
-		String appid = tempMap.get("appid").toString();
 		AccessToken accessToken = accessTokenDao.selectAccessToken(appid);
 		if(accessToken==null) {
-			responseMap.put("status",202);
-			responseMap.put("message","找不到记录");
-			return responseMap;
+			return accessTokenStr;
 		}
-		responseMap.put("status",200);
-		responseMap.put("message","查询成功");
-		responseMap.put("wechatApp",accessToken);
-		return responseMap;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String nowDate = sdf.format(new Date());
+		String refreshDate = accessToken.getRefreshDate();
+		boolean needRefresh = DateUtils.compare(refreshDate,nowDate);
+		if(needRefresh){
+			createAccessToken(appid);
+			accessToken = accessTokenDao.selectAccessToken(appid);
+		}
+		return accessToken.getAccessToken();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -55,6 +58,7 @@ public class AccessTokenServiceImpl implements AccessTokenService {
 		String secret = wechatAppInfo.getSecret();
 		String getAccessTokenUrl = String.format(Constants.GET_ACCESS_TOKEN,appid,secret);
 		String jsonStr = HttpUtils.get(getAccessTokenUrl, null);
+		logger.info("getAccessToken:"+jsonStr);
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String,Object> map = mapper.readValue(jsonStr,Map.class);
 		Integer errcode = (Integer)map.get("errcode");
@@ -63,7 +67,7 @@ public class AccessTokenServiceImpl implements AccessTokenService {
 			String accessTokenStr = map.get("access_token").toString();
 			int expiresIn = (Integer)map.get("expires_in");
 			Date nowDate = new Date();
-			Date refreshDate = new Date(nowDate.getTime()+expiresIn-300);
+			Date refreshDate = new Date(nowDate.getTime()+expiresIn*1000-300*1000);
 			accessToken.setAppid(appid);
 			accessToken.setAccessToken(accessTokenStr);
 			accessToken.setExpiresIn(expiresIn);

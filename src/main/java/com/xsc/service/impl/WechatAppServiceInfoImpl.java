@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.xsc.dao.WechatAppInfoDao;
 import com.xsc.model.WechatAppInfo;
@@ -49,6 +50,17 @@ public class WechatAppServiceInfoImpl implements WechatAppInfoService {
 		responseMap.put("message","查询成功");
 		responseMap.put("wechatApp",wechatApp);
 		return responseMap;
+	}
+	
+	public WechatAppInfo selectWechatAppByAppid(String appid) throws Exception {
+		if(StringUtils.isEmpty(appid)) {
+			return null;
+		}
+		WechatAppInfo wechatApp = wechatAppDao.selectWechatAppByAppid(appid);
+		if(wechatApp==null) {
+			return null;
+		}
+		return wechatApp;
 	}
 	
 	public Map<String,Object> insertWechatApp(Map<String,Object> tempMap) throws Exception{

@@ -106,4 +106,23 @@ public class DateUtils {
 		SimpleDateFormat formatTime = new SimpleDateFormat( formatter );
 		return formatTime.format( date );
 	}
+	
+	/**
+	 * 比较两个时间的早晚
+	 * time1早于time2，返回true
+	 * @param time1
+	 * @param time2
+	 * @return
+	 * @throws ParseException
+	 */
+	public static boolean compare(String time1,String time2) throws ParseException{
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		Date a = sdf.parse(time1);
+		Date b = sdf.parse(time2);
+		if(a.getTime()-b.getTime()<0){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
