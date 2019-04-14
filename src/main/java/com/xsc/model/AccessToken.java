@@ -39,13 +39,13 @@ public class AccessToken {
 		return createDate;
 	}
 	public void setCreateDate(Date createDate) {
-		this.createDate = DateUtils.format(createDate, "yyyy-MM-dd hh:mm:ss");
+		this.createDate = DateUtils.format(createDate, "yyyy-MM-dd HH:mm:ss");
 	}
 	public String getRefreshDate() {
 		return refreshDate;
 	}
 	public void setRefreshDate(Date refreshDate) {
-		this.refreshDate = DateUtils.format(refreshDate, "yyyy-MM-dd hh:mm:ss");;
+		this.refreshDate = DateUtils.format(refreshDate, "yyyy-MM-dd HH:mm:ss");;
 	}
 	
 }

@@ -116,7 +116,7 @@ public class DateUtils {
 	 * @throws ParseException
 	 */
 	public static boolean compare(String time1,String time2) throws ParseException{
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date a = sdf.parse(time1);
 		Date b = sdf.parse(time2);
 		if(a.getTime()-b.getTime()<0){

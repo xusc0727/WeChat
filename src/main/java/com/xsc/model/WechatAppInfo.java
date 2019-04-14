@@ -67,7 +67,7 @@ public class WechatAppInfo {
 		return createDate;
 	}
 	public void setCreateDate(Date createDate) {
-		this.createDate = DateUtils.format(createDate, "yyyy-MM-dd hh:mm:ss");
+		this.createDate = DateUtils.format(createDate, "yyyy-MM-dd HH:mm:ss");
 	}
 	public String getCreateBy() {
 		return createBy;
@@ -79,7 +79,7 @@ public class WechatAppInfo {
 		return updateDate;
 	}
 	public void setUpdateDate(Date updateDate) {
-		this.updateDate = DateUtils.format(updateDate, "yyyy-MM-dd hh:mm:ss");
+		this.updateDate = DateUtils.format(updateDate, "yyyy-MM-dd HH:mm:ss");
 	}
 	public String getUpdateBy() {
 		return updateBy;

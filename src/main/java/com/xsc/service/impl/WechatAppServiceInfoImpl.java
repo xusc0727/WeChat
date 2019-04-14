@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -15,6 +16,8 @@ import com.xsc.service.WechatAppInfoService;
 @Service("WechatAppServiceInfoImpl")
 public class WechatAppServiceInfoImpl implements WechatAppInfoService {
 
+	private static final Logger logger = Logger.getLogger(WechatAppServiceInfoImpl.class);
+	
 	@Autowired
 	private WechatAppInfoDao wechatAppDao;
 	

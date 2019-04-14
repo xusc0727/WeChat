@@ -40,7 +40,7 @@ public class AccessTokenServiceImpl implements AccessTokenService {
 		if(accessToken==null) {
 			return accessTokenStr;
 		}
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String nowDate = sdf.format(new Date());
 		String refreshDate = accessToken.getRefreshDate();
 		boolean needRefresh = DateUtils.compare(refreshDate,nowDate);

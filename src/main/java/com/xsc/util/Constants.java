@@ -20,9 +20,9 @@ public class Constants {
 	public static final String UPDATE_NEWS_URL="https://api.weixin.qq.com/cgi-bin/material/update_news?access_token=%s";
 	
 	public static final String UPLOAD_IMG_URL="https://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token=%s";
-
+	//获取用户列表
 	public static final String USER_GET_URL="https://api.weixin.qq.com/cgi-bin/user/get?access_token=%s&next_openid=%s";
-	 
+	//获取用户基本信息
 	public static final String USER_INFO_URL="https://api.weixin.qq.com/cgi-bin/user/info?access_token=%s&openid=%s&lang=zh_CN";
 	 
 	public static final String BATCHTAGGING_URL="https://api.weixin.qq.com/cgi-bin/tags/members/batchtagging?access_token=%s";

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xsc.dao.FansDao">
+  <resultMap id="FansResultMap" type="com.xsc.model.Fans">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="openid" jdbcType="VARCHAR" property="openid" />
+    <result column="is_subscribe" jdbcType="INTEGER" property="isSubscribe" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="language" jdbcType="VARCHAR" property="language" />
+    <result column="headimgurl" jdbcType="VARCHAR" property="headimgurl" />
+    <result column="subscribe_time" jdbcType="TIMESTAMP" property="subscribeTime" />
+    <result column="unionid" jdbcType="VARCHAR" property="unionid" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="groupid" jdbcType="VARCHAR" property="groupid" />
+    <result column="tagid_list" jdbcType="VARCHAR" property="tagidList" />
+    <result column="subscribe_scene" jdbcType="VARCHAR" property="subscribeScene" />
+    <result column="wechat_appid" jdbcType="VARCHAR" property="wechatAppid" />
+    <result column="is_checker" jdbcType="INTEGER" property="isChecker" />
+    <result column="is_black" jdbcType="INTEGER" property="isBlack" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+  </resultMap>
+
+	<select id="selectFansList" resultMap="FansResultMap">
+		SELECT * 
+		FROM Wechat_Fans
+	</select>
+	<select id="selectFansByOpenid" resultMap="FansResultMap">
+		SELECT * 
+		FROM Wechat_Fans
+		WHERE openid = #{openid}
+	</select>
+	<insert id="insertFans" parameterType="com.xsc.model.Fans" >
+		INSERT INTO Wechat_Fans
+					(
+					openid,
+					is_subscribe,
+					nickname,
+					sex,
+					city,
+					country,
+					province,
+					language,
+					headimgurl,
+					subscribe_time,
+					unionid,
+					remark,
+					groupid,
+					tagid_list,
+					subscribe_scene,
+					wechat_appid,
+					create_date,
+					create_by,
+					update_date,
+					update_by
+					)
+		VALUES
+				(
+				#{openid},
+				#{isSubscribe},
+				#{nickname},
+				#{sex},
+				#{city},
+				#{country},
+				#{province},
+				#{language},
+				#{headimgurl},
+				#{subscribeTime},
+				#{unionid},
+				#{remark},
+				#{groupid},
+				#{tagidList},
+				#{subscribeScene},
+				#{wechatAppid},
+				#{createDate},
+				#{createBy},
+				#{updateDate},
+				#{updateBy}
+				)
+	</insert>
+	<delete id="deleteFansByOpenid">
+	    DELETE FROM Wechat_Fans 
+	    WHERE openid = #{openid}
+	</delete>
+</mapper>

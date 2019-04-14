@@ -2,27 +2,37 @@ package com.xsc.model;
 
 import java.util.Date;
 
+import com.xsc.util.DateUtils;
+
 public class Fans {
 
 	private Long id;
 	//用户的标识，对当前公众号唯一
-	private String openId;
+	private String openid;
+	//用户是否关注公众号
+	private int isSubscribe;
 	//用户的昵称
-	private String nickName;
+	private String nickname;
 	//用户的性别
-	private String sex;
+	private int sex;
+	//用户所在城市
+	private String city;
 	//用户所在国家
 	private String country;
 	//用户所在省份
 	private String province;
-	//用户所在城市
-	private String city;
+	//用户的语言
+	private String language;
 	//用户头像地址
-	private String headimgUrl;
+	private String headimgurl;
 	//用户关注时间
-	private Date subscribeDate;
+	private String subscribeTime;
+	//unionid
+	private String unionid;
 	//公众号运营者对粉丝的备注
 	private String remark;
+	//用户所在的分组ID（兼容旧分组接口）
+	private String groupid;
 	//用户被打上的标签ID列表
 	private String tagidList;
 	/*
@@ -37,44 +47,55 @@ public class Fans {
 	 * ADD_SCENE_OTHERS 其他
 	 */
 	private String subscribeScene;
-	//是否审核人
-	private String isChecker;
-	//是否黑名单
-	private Integer isBlack;
-	//是否取消关注
-	private Integer isDel;
-	//创建时间
-	private Date createDate;
-	//修改时间
-	private Date updateDate;
 	//所属公众号id
-	private Long weixinAppId;
+	private String wechatAppid;
+	//是否审核人
+	private int isChecker;
+	//是否黑名单
+	private int isBlack;
+	//创建时间
+	private String createDate;
+	//创建人
+	private String createBy;
+	//修改时间
+	private String updateDate;
 	//更新人
 	private String updateBy;
-	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getOpenId() {
-		return openId;
+	public String getOpenid() {
+		return openid;
 	}
-	public void setOpenId(String openId) {
-		this.openId = openId;
+	public void setOpenid(String openid) {
+		this.openid = openid;
 	}
-	public String getNickName() {
-		return nickName;
+	public int getIsSubscribe() {
+		return isSubscribe;
 	}
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
+	public void setIsSubscribe(int isSubscribe) {
+		this.isSubscribe = isSubscribe;
 	}
-	public String getSex() {
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public int getSex() {
 		return sex;
 	}
-	public void setSex(String sex) {
+	public void setSex(int sex) {
 		this.sex = sex;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
 	}
 	public String getCountry() {
 		return country;
@@ -88,29 +109,41 @@ public class Fans {
 	public void setProvince(String province) {
 		this.province = province;
 	}
-	public String getCity() {
-		return city;
+	public String getLanguage() {
+		return language;
 	}
-	public void setCity(String city) {
-		this.city = city;
+	public void setLanguage(String language) {
+		this.language = language;
 	}
-	public String getHeadimgUrl() {
-		return headimgUrl;
+	public String getHeadimgurl() {
+		return headimgurl;
 	}
-	public void setHeadimgUrl(String headimgUrl) {
-		this.headimgUrl = headimgUrl;
+	public void setHeadimgurl(String headimgurl) {
+		this.headimgurl = headimgurl;
 	}
-	public Date getSubscribeDate() {
-		return subscribeDate;
+	public String getSubscribeTime() {
+		return subscribeTime;
 	}
-	public void setSubscribeDate(Date subscribeDate) {
-		this.subscribeDate = subscribeDate;
+	public void setSubscribeTime(Date subscribeTime) {
+		this.subscribeTime = DateUtils.format(subscribeTime, "yyyy-MM-dd HH:mm:ss");
+	}
+	public String getUnionid() {
+		return unionid;
+	}
+	public void setUnionid(String unionid) {
+		this.unionid = unionid;
 	}
 	public String getRemark() {
 		return remark;
 	}
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+	public String getGroupid() {
+		return groupid;
+	}
+	public void setGroupid(String groupid) {
+		this.groupid = groupid;
 	}
 	public String getTagidList() {
 		return tagidList;
@@ -124,41 +157,41 @@ public class Fans {
 	public void setSubscribeScene(String subscribeScene) {
 		this.subscribeScene = subscribeScene;
 	}
-	public String getIsChecker() {
+	public String getWechatAppid() {
+		return wechatAppid;
+	}
+	public void setWechatAppid(String wechatAppid) {
+		this.wechatAppid = wechatAppid;
+	}
+	public int getIsChecker() {
 		return isChecker;
 	}
-	public void setIsChecker(String isChecker) {
+	public void setIsChecker(int isChecker) {
 		this.isChecker = isChecker;
 	}
-	public Integer getIsBlack() {
+	public int getIsBlack() {
 		return isBlack;
 	}
-	public void setIsBlack(Integer isBlack) {
+	public void setIsBlack(int isBlack) {
 		this.isBlack = isBlack;
 	}
-	public Integer getIsDel() {
-		return isDel;
-	}
-	public void setIsDel(Integer isDel) {
-		this.isDel = isDel;
-	}
-	public Date getCreateDate() {
+	public String getCreateDate() {
 		return createDate;
 	}
 	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
+		this.createDate = DateUtils.format(createDate, "yyyy-MM-dd HH:mm:ss");
 	}
-	public Date getUpdateDate() {
+	public String getCreateBy() {
+		return createBy;
+	}
+	public void setCreateBy(String createBy) {
+		this.createBy = createBy;
+	}
+	public String getUpdateDate() {
 		return updateDate;
 	}
 	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
-	}
-	public Long getWeixinAppId() {
-		return weixinAppId;
-	}
-	public void setWeixinAppId(Long weixinAppId) {
-		this.weixinAppId = weixinAppId;
+		this.updateDate = DateUtils.format(updateDate, "yyyy-MM-dd HH:mm:ss");
 	}
 	public String getUpdateBy() {
 		return updateBy;
@@ -166,5 +199,6 @@ public class Fans {
 	public void setUpdateBy(String updateBy) {
 		this.updateBy = updateBy;
 	}
+	
 	
 }
